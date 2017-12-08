@@ -7,7 +7,14 @@ Shree: Added GUI file : It contains the python code for GUI framework, where we 
 
 8-December <br />
 
-Ahmed: mongoimport for cmd <br />
+Ahmed <br />
+mongoimport for cmd <br />
 Run this command at the path of the json file <br />
-"mongoimport path"/mongoimport --host localhost:27017 --db "database name" --collection "collection name" "json file name"
+"mongoimport path"/mongoimport --host localhost:27017 --db "database name" --collection "collection name" "json file name" <br />
+
+General Script to change csv to json <br />
+Add the csvfilename as a commandline argument 
+The jsonfilename is an optional commandline argument <br />
+Extension needed: pass the header names as commandline argument somehow <br />
+
 
