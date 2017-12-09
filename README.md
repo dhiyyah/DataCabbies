@@ -17,4 +17,5 @@ Add the csvfilename as a commandline argument
 The jsonfilename is an optional commandline argument <br />
 Extension needed: pass the header names as commandline argument somehow <br />
 
-
+### 9-December <br />
+Shree: Added functions seperately for green and yellow data for Jan 2017:cleaning data - whole will be uploaded soon as class file. <br />
