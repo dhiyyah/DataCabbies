@@ -19,3 +19,9 @@ Extension needed: pass the header names as commandline argument somehow <br />
 
 ### 9-December <br />
 Shree: Added functions seperately for green and yellow data for Jan 2017:cleaning data - whole will be uploaded soon as class file. <br />
+
+### 13-December <br />
+Fahad: Python script which used to read CSV file and clean the dataset in order to reduce the size of file. <br />
+      - Be patient, it takes time to read, remove and write the file. <br />
+      - Don't  forget to update the list of column indexes<br />
+
