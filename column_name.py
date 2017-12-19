@@ -1,10 +1,16 @@
 import pandas as pd
+import sys
+from pprint import pprint
 
-numberOfRows = 50
-fileName = 'yellow_tripdata_2014-04.csv'
-df = pd.read_csv(fileName,  nrows= numberOfRows)
+fileName = sys.argv[1] 
+numberOfRows = 10
+#fileName = 'yellow_tripdata_2014-04.csv'
+df = pd.read_csv(fileName, nrows = numberOfRows)
 #df = pd.read_csv(fileName)
-print(df.columns.values)
+colcount = 0
+for i in df.columns.values: 
+    print(colcount,'\t',i)
+    colcount+=1
 
 
 
@@ -24,7 +30,6 @@ Note that for green taxi dataset, we have to remove all these columns
 'trip_type',
 'tip_amount'
 }
-
 and for yellow taxi dataset 
 {
   'VendorID',
@@ -37,7 +42,5 @@ and for yellow taxi dataset
   'payment_type',
   'tip_amount',
 }
-
 Finally, U
-
 '''
