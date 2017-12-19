@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import csv
+import sys
 
 
 class CSVfile:
@@ -53,47 +54,30 @@ class CSVfile:
 
 	def convertFromDataFrame_To_CSV(self,df,fileName):
 		with open(fileName, 'a') as f:
-			df.to_csv(f)
+			df.to_csv(f,index=False)
 
 		
 
 
 # this list will be changed depanding on the indexes which want to remove.
-list_column_name_yellow = [0,7,8,11,16]
+list_column_name = [0,3,4,8,11,12,13,14,15,16,19] #green apr 14
+#list_column_name = [0,7,8,12,13,14,15,16] #yellow apr 14
 # Namber of rows which you want to read from CSV file  # Note that # you might want to read all csv file so you don't need this varible.
 numberOfRows = 50
 # a specific CSV file which you want to read it.
-fileName_yellow = 'yellow_tripdata_2014-04.csv'
+fileName = sys.argv[1]
 # creat object from class
-object_yellow = CSVfile()
+object_file = CSVfile()
 # convert CSV file to DataFram
 # convert a specific rows of the CSV file
-#data = object_yellow.readCSVFile(fileName_yellow,numberOfRows)
+#data = object_file.readCSVFile(fileName,numberOfRows)
 #or you can read all the file 
-data = object_yellow.readAllCSVFile(fileName_yellow)
+data = object_file.readAllCSVFile(fileName)
 # Remove colums you don't need it 
-data = object_yellow.removeColumn(data,list_column_name_yellow)
+data = object_file.removeColumn(data,list_column_name)
 #check columns name in order to be sure you removed the specific columns
-object_yellow.printColumn_name(data)
+object_file.printColumn_name(data)
 # creat varible for output file.
-output_file= 'output.csv'
+output_file= 'reduced_'+fileName
 # convert dataFrame to CSV file and you can find  the file at the same folder.
-object_yellow.convertFromDataFrame_To_CSV(data,output_file)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+object_file.convertFromDataFrame_To_CSV(data,output_file)
