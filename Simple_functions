@@ -1,0 +1,41 @@
+#This file contains simple code for simple finctions
+
+db = client.datacabbies
+collection = db.green
+
+#Return pickups for one day : Hard coded dates  #######################1##############################
+start = '2017-01-01 20:00:00'
+end = '2017-01-01 23:59:59'
+
+cursor = collection.find( {'lpep_pickup_datetime': {'$gte': start, '$lt': end}}, limit=1)
+#cursor.count()
+for c in cursor:
+    pprint(c)
+    
+    
+#Return pickups for all Monday's in Jan : Hard coded code #######################2##############################
+
+start1 = '2017-01-02 00:00:00'
+end1 = '2017-01-02 23:59:59'
+
+
+start2 = '2017-01-09 00:00:00'
+end2 = '2017-01-09 23:59:59'
+
+
+start3 = '2017-01-16 00:00:00'
+end3 = '2017-01-16 23:59:59'
+
+start4 = '2017-01-23 00:00:00'
+end4 = '2017-01-23 23:59:59'
+
+start5 = '2017-01-30 00:00:00'
+end5 = '2017-01-30 23:59:59'
+
+filter = {"$or": [{"lpep_pickup_datetime": {'$gte': start1, '$lt': end1}}, {"lpep_pickup_datetime": {'$gte': start2, '$lt': end2}},{"lpep_pickup_datetime": {'$gte': start3, '$lt': end3}},{"lpep_pickup_datetime": {'$gte': start4, '$lt': end4}},{"lpep_pickup_datetime": {'$gte': start5, '$lt': end5}}]}
+cursor = collection.find( filter, limit =2)
+cursor.count()
+for c in cursor:
+    pprint(c)
+    
+    
