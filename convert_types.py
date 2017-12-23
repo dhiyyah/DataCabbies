@@ -34,10 +34,27 @@ def convert_to_string(date_format, collection):
                                        'dropoff_datetime' : dropoff_datetime}})
     return
 
+#converts from strintg to geopoint
+def convert_to_Point(collection):
+    cursor = collection.find()
+    for record in cursor:
+        droplat = float(record['dropoff_latitude'])
+        droplong = float(record['dropoff_longitude'])
+        picklat = float(record['pickup_latitude'])
+        picklong = float(record['pickup_longitude'])
+        dropPoint = Point((droplat,droplong))
+        pickPoint = Point((picklat,picklong))    
+        collection.update_one({'_id':record['_id']},{'$unset':{'dropoff_latitude':'',\
+                                                           'dropoff_longitude':'',\
+                                                           'pickup_latitude':'',\
+                                                           'pickup_longitude':''},\
+                         '$set':{'dropoff_Point' : dropPoint, 'pickup_Point' : pickPoint}})
+
 
 #date_format = '%Y-%m-%d %H:%M:%S'
 #collection = db['sy_apr-14']
 #convert_to_string(date_format, collection)
+#convert_to_Point(collection)
 #collection.find_one()
 #convert_from_string(date_format, collection)
 #collection.find_one()
