@@ -1,0 +1,24 @@
+#Return pickups for the first week of Jan ############################
+def get_pickups_per_period(collection,start,end):
+    result=[]
+    cursor = collection.find( {'lpep_pickup_datetime': {'$gte': start, '$lte': end}})
+    for c in cursor:
+        result.append(c)
+    return result
+    
+    
+ #Return pickups for the one day on week################################
+ def get_pickups_per_day(collection, day):
+    start = '2017-01-01 00:00:00'
+    end = '2017-01-08 23:59:59'
+    temp=get_pickups_per_period(collection,start,end)
+    result=[x for x in temp if x['lpep_pickup_datetime'] >= start and x['lpep_pickup_datetime'] <= end]
+    return result
+    
+ #Return pickups for the one location ################################
+ def get_pickups_location(collection, locationID, day):
+    temp=get_pickups_per_day(collection, day)
+    result=[x for x in temp if x['PULocationID'] == locationID]
+    #count=len(result)
+    return result
+    

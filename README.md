@@ -25,3 +25,5 @@ Fahad: Python script which used to read CSV file and clean the dataset in order 
       - Be patient, it takes time to read, remove and write the file. <br />
       - Don't  forget to update the list of column indexes<br />
 
+### 20-December <br />
+Ayah: Python script that has Simple_functions to return data of pickups on one day or on mondays for Jan, it is hard coded
