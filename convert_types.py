@@ -1,4 +1,5 @@
 #from string to datetime, float, int
+#from string to datetime, float, int
 def convert_from_string(date_format, collection):
     cursor = collection.find()
     for record in cursor:
@@ -6,15 +7,18 @@ def convert_from_string(date_format, collection):
         trip_distance = float(record['trip_distance'])
         total_amount = float(record['total_amount'])
         pickup_datetime = datetime.strptime(record['pickup_datetime'],date_format)
+        pickup_weekday = pickup_datetime.weekday()
         dropoff_datetime = datetime.strptime(record['dropoff_datetime'],date_format)
+        dropoff_weekday = dropoff_datetime.weekday()
         collection.update_one({'_id':record['_id']},\
                               {'$set':{'passenger_count' : passenger_count,\
                                        'trip_distance' : trip_distance,\
                                        'total_amount' : total_amount,\
                                        'pickup_datetime' : pickup_datetime,\
-                                       'dropoff_datetime' : dropoff_datetime}})
+                                       'pickup_weekday' : pickup_weekday,\
+                                       'dropoff_datetime' : dropoff_datetime,\
+                                       'dropoff_weekday' : dropoff_weekday}})
     return
-
 
 
 #from datetime, float, int to string
