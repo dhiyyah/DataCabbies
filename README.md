@@ -27,3 +27,6 @@ Fahad: Python script which used to read CSV file and clean the dataset in order 
 
 ### 20-December <br />
 Ayah: Python script that has Simple_functions to return data of pickups on one day or on mondays for Jan, it is hard coded
+
+### 20-December <br />
+Shree : Uploaded try.iypnb file where I have tried to visualize the data set in the form of scatter plots with respect to the tip amount.
