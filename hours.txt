@@ -1,0 +1,18 @@
++def hours_trips(collection):
++    c = collection.aggregate(
++       [
++         {
++           '$project':
++             {
++               'hours': { '$hour': "$lpep_pickup_datetime" },
++             }
++         },
++            { '$group' : {'_id': '$hours', 'count' : {'$sum' : 1}} },
++           {'$sort' : {'_id': 1}}
++       ]
++    )
++    hr = []
++    count = []
++    for d in c:
++        hr.append(d['_id'])
++        count.append(d['count'])
